@@ -2,8 +2,13 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router'
+import {  createBrowserRouter} from 'react-router'
 import RootLayout from './Rootlayout/RootLayout.jsx'
+import Home from './Pages/HomePage/Home.jsx'
+import Apps from './Pages/Apps/Apps.jsx'
+import Install from './Pages/InstallPage/Install.jsx'
+import { RouterProvider } from 'react-router/dom'
+import NotFound from './Pages/Not-Found/Not-found.jsx'
 
 const router = createBrowserRouter(
   [
@@ -13,14 +18,18 @@ const router = createBrowserRouter(
       children:[
         {
           path:'/homepage',
-          element:<h2>HomePage</h2>
+          element:<Home></Home>
         },
         {
           path:'/apps',
-          element:<h2>AppsPage</h2>
+          element:<Apps></Apps>
+        },
+        {
+          path:'/installed',
+          element:<Install></Install>
         }
       ],
-      errorElement:<h2>This Page is not Found </h2>
+      errorElement:<NotFound></NotFound>
       
     },
     
@@ -30,6 +39,6 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-    <RouterProvider router={router} />
+  <RouterProvider router={router}></RouterProvider>
   </StrictMode>,
 )
